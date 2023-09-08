@@ -1,8 +1,10 @@
 import { IsDateString, IsNumber, IsNumberString, IsString } from 'class-validator';
+import { Exclude } from 'class-transformer';
 import { Entity } from 'typeorm';
 
 @Entity()
 export class ProfileRouterDTO {
+    @Exclude()
     @IsNumber()
     profile_id: number;
 

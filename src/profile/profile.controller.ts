@@ -10,7 +10,7 @@ export class ProfileController {
     }
 
     @Post()
-    async create(@Body(ValidationPipe) profileData: ProfileRouterDTO) {
+    async create(@Body(ValidationPipe) profileData: Partial<ProfileRouterDTO>) {
         const response = new ProfileResponseDTO();
 
         const newProfile = new Profile();
@@ -39,24 +39,24 @@ export class ProfileController {
     async edit(@Body(ValidationPipe) profileData: Partial<ProfileRouterDTO>) {
         const response = new ProfileResponseDTO();
 
-        const editProfile = new Profile();
-        editProfile.profile_id = profileData.profile_id;
-        editProfile.name = profileData.name;
-        editProfile.date_of_birthday = profileData.date_of_birthday;
-        editProfile.phone_number = profileData.phone_number;
+        const editedProfile = new Profile();
+        editedProfile.profile_id = profileData.profile_id;
+        editedProfile.name = profileData.name;
+        editedProfile.date_of_birthday = profileData.date_of_birthday;
+        editedProfile.phone_number = profileData.phone_number;
 
         try{
-            const created = await this.profileService.update(editProfile);
+            const created = await this.profileService.update(editedProfile);
             if(created){
-                response.message = ["Perfil criado com sucesso!"]
+                response.message = ["Perfil editado com sucesso!"]
             }else{
                 const response = new ProfileResponseDTO();
-                response.message = ["Algo deu errado. Não foi possível criar o perfil."];
+                response.message = ["Algo deu errado. Não foi possível editar o perfil."];
                 response.statusCode = 400;
             }
             return response;
         } catch(err){
-            response.message = ["Algo deu errado. Não foi possível criar o perfil."];
+            response.message = ["Algo deu errado. Não foi possível editar o perfil."];
             response.statusCode = 500;
             return response;
         }

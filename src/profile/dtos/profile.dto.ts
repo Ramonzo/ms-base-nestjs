@@ -1,4 +1,4 @@
-import { IsDateString, IsString } from 'class-validator';
+import { IsDateString, IsNotEmpty, IsString } from 'class-validator';
 import { Entity } from 'typeorm';
 
 @Entity()
@@ -8,7 +8,10 @@ export class ProfileDTO {
     readonly address_id: number;
 
     readonly billing_address_id: number;
-    
+
+    @IsNotEmpty({
+        message: "Nome precisa ser informado."
+    })
     @IsString({
         message: "SIS - name não pertence ao tipo informado."
     })
@@ -19,6 +22,9 @@ export class ProfileDTO {
     })
     phone_number: string;
 
+    @IsNotEmpty({
+        message: "Data de Aniversário precisa ser informada."
+    })
     @IsDateString({}, {
         message: "Formato de data inválido."
     })

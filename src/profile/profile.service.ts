@@ -12,7 +12,7 @@ export class ProfileService {
         await queryRunner.connect();
         await queryRunner.startTransaction();
         try {
-            const profile = await queryRunner.manager.save(profileData);
+            const profile = await queryRunner.manager.create(Profile, profileData);
             
             await queryRunner.commitTransaction();
         } catch (err) {
@@ -31,7 +31,7 @@ export class ProfileService {
         await queryRunner.connect();
         await queryRunner.startTransaction();
         try {
-            const profile = await queryRunner.manager.save(profileData);
+            const profile = await queryRunner.manager.update(Profile, profileData.profile_id, profileData);
             
             await queryRunner.commitTransaction();
         } catch (err) {

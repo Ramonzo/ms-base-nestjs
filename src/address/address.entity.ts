@@ -8,6 +8,9 @@ export class Address  {
 
     @Column()
     street: string;
+
+    @Column()
+    street_number: string;
     
     @Column()
     complement: string;
@@ -24,11 +27,11 @@ export class Address  {
     @Column()
     zip_code: string;
 
-    @Column()
-    latitude: string;
+    // @Column()
+    // latitude: string;
 
-    @Column()
-    longitude: string;
+    // @Column()
+    // longitude: string;
 
     @OneToOne(() => Profile, (profile) => profile.address)
     profile: Profile;
