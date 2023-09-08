@@ -1,7 +1,7 @@
 import { Entity } from 'typeorm';
 
 @Entity()
-export class UserResponseDTO {
+export class AddressResponseDTO {
     message: string[] = [];
     error: string = "";
     statusCode: number = 200;

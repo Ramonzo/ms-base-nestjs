@@ -1,6 +1,6 @@
-import { IsBoolean, IsDateString, IsEmail, IsNotEmpty, IsString, MaxLength } from 'class-validator';
+import { IsBoolean, IsDateString, IsEmail, IsNotEmpty, IsString } from 'class-validator';
 import { Profile } from 'src/profile/profile.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
+import { Entity } from 'typeorm';
 
 @Entity()
 export class UserDTO {
@@ -62,11 +62,11 @@ export class UserDTO {
     readonly cookies: boolean = false;
 
     constructor(user: UserDTO) {
-        this.email = user.email
-        this.password = user.password
-        this.delete = user.delete
-        this.block = user.block
-        this.block_expire = user.block_expire
-        this.cookies = user.cookies
+        this.email = user.email;
+        this.password = user.password;
+        this.delete = user.delete;
+        this.block = user.block;
+        this.block_expire = user.block_expire;
+        this.cookies = user.cookies;
     }
 }

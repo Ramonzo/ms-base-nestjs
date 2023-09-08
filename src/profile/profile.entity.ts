@@ -11,13 +11,13 @@ export class Profile  {
     name: string;
     
     @Column()
-    date_of_birth: string;
+    date_of_birthday: string;
+    
+    // @Column()
+    // individual_taxpayer_registration: string;
     
     @Column()
-    individual_taxpayer_registration: string;
-    
-    @Column()
-    telephone_number: string;
+    phone_number: string;
     
     @Column()
     address_id: number;
